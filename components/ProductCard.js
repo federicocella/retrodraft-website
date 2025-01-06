@@ -33,13 +33,13 @@ export default function ProductCard({ product }) {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
-                <div className="w-full h-64 bg-gray-200 flex items-center justify-center rounded-md overflow-hidden relative">
+                <div className="w-full bg-gray-200 flex items-center justify-center rounded-md overflow-hidden relative aspect-square">
                     {images?.map((image, index) => (
                         <img
                             key={image.url_570xN}
                             src={image.url_570xN}
                             alt={`${title} - View ${index + 1}`}
-                            className={`absolute w-full h-64 object-cover transition-opacity duration-500 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                            className={`absolute w-full h-full object-cover transition-opacity duration-500 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'
                                 }`}
                         />
                     ))}
@@ -48,7 +48,7 @@ export default function ProductCard({ product }) {
                     )}
                 </div>
                 <div className="p-6 flex flex-col items-center justify-center">
-                    <h3 className="text-md font-medium mb-1 text-center">{title}</h3>
+                    <h3 className="text-md mb-1 text-center text-slate-900">{title}</h3>
                     <div className="flex justify-between items-center">
                         <span className="text-sm text-gray-600">
                             {formatPrice(price)}

@@ -5,6 +5,7 @@ export default {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: false,
   theme: {
     extend: {
       colors: {
@@ -33,7 +34,35 @@ export default {
           300: '#BDC9BD',
           400: '#A7B7A7',
           500: '#91A591',
+          800: '#425542',
         },
+      },
+      keyframes: {
+        'fade-in-up': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(30px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          },
+        },
+        'fade-in': {
+          '0%': {
+            opacity: '0',
+            transform: 'scale(0.9)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'scale(1)'
+          },
+        }
+      },
+      animation: {
+        'fade-in-up': 'fade-in-up 0.3s ease-out 0.4s forwards',
+        'fade-in-up-delay': 'fade-in-up 0.3s ease-out 0.6s forwards',
+        'fade-in': 'fade-in 0.3s ease-out 0.2s forwards',
       },
     },
   },

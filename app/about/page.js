@@ -1,7 +1,7 @@
 // Local Components
 function SectionTitle({ children }) {
     return (
-        <h2 className="text-2xl font-medium text-gray-900">
+        <h2 className="text-2xl text-gray-900">
             {children}
         </h2>
     );
@@ -24,9 +24,9 @@ export default function AboutPage() {
     return (
         <div className="min-h-screen">
             {/* Hero Section */}
-            <div className="bg-sage-400">
+            <div className="bg-white">
                 <div className="container mx-auto px-4 py-16 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4 text-cream-50">About RetroDraft</h1>
+                    <h1 className="text-4xl md:text-5xl font-semibold mb-4 text-slate-900 tracking-tight">About RetroDraft</h1>
                 </div>
             </div>
 
@@ -43,7 +43,7 @@ export default function AboutPage() {
                     <section className="space-y-4 mb-12">
                         <SectionTitle>Our Prints</SectionTitle>
                         <Paragraph>
-                            Every print you see here is the result of a lot of thought, care, and effort. From bold city maps that capture the energy of graffiti to typography pieces inspired by the albums and sounds I love, each design is created to bring personality and meaning to your space. All of my prints are high-quality, whether they're 300 DPI at A1 size for incredible detail or infinitely scalable vector graphics, so they'll look amazing no matter how you display them.
+                            Every print you see here is the result of a lot of thought, care, and effort. From bold city maps that capture the energy of graffiti to typography pieces inspired by the albums and sounds I love, each design is created to bring personality and meaning to your space. All of my prints are high-quality, with either 300 DPI at A1 size for incredible detail or infinitely scalable vector graphics, so they'll look amazing no matter how you display them.
                         </Paragraph>
                         <Paragraph>
                             What you don't see is the behind-the-scenes work that goes into every series. Every series takes weeks in order to make sure each design is high quality and prints perfectly. It's a labor of love, and I hope that care comes through in the final product.
@@ -63,6 +63,7 @@ export default function AboutPage() {
                         <SectionTitle>Where to Buy</SectionTitle>
                         <Paragraph>
                             For now, my prints are only available on Etsy. Etsy has been a great starting point, and it's where you'll find my full collection while I figure out the next steps for RetroDraft.
+                            If you buy through the links on this website, I'll get back some of the Etsy fees so it would be very helpful!
                         </Paragraph>
                     </section>
 

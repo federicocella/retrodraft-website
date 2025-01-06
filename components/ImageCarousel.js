@@ -19,7 +19,7 @@ export default function ImageCarousel({ images }) {
     if (!images?.length) return null;
 
     return (
-        <div className="relative w-full aspect-square">
+        <div className="relative w-full h-96">
             {/* Main Image */}
             <div className="relative w-full h-full">
                 {images.map((image, index) => (

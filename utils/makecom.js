@@ -52,6 +52,15 @@ const sampleListings = [
     }
 ];
 
+// Cache object to store the listings and timestamp
+let cache = {
+    listings: null,
+    timestamp: null
+};
+
+// Cache duration in milliseconds (1 hour)
+const CACHE_DURATION = 60 * 60 * 1000;
+
 export async function getShopListings() {
     // Use sample data in development
     if (process.env.NODE_ENV === 'development') {
@@ -59,13 +68,31 @@ export async function getShopListings() {
         return sampleListings;
     }
 
-    // Use real data in production
+    // Check if we have valid cached data
+    const now = Date.now();
+    if (cache.listings && cache.timestamp && (now - cache.timestamp < CACHE_DURATION)) {
+        console.log('Using cached listings data');
+        return cache.listings;
+    }
+
+    // Fetch new data if cache is invalid or expired
     try {
+        console.log('Fetching fresh listings data from webhook');
         const response = await axios.get(process.env.MAKECOM_WEBHOOK_URL);
-        const listings = response.data;
-        return Array.isArray(listings) ? listings : [];
+        const listings = Array.isArray(response.data) ? response.data : [];
+
+        // Update cache
+        cache.listings = listings;
+        cache.timestamp = now;
+
+        return listings;
     } catch (error) {
         console.error('Error fetching listings from make.com:', error.response?.data || error);
+        // Return cached data if available, even if expired
+        if (cache.listings) {
+            console.log('Returning expired cached data due to error');
+            return cache.listings;
+        }
         return [];
     }
 } 
