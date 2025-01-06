@@ -37,11 +37,19 @@ const sampleListings = [
 ];
 
 export async function getShopListings() {
-    try {
-        // For development, return sample data instead of making API call
+    // Use sample data in development
+    if (process.env.NODE_ENV === 'development') {
+        console.log('Using sample data in development');
         return sampleListings;
+    }
+
+    // Use real data in production
+    try {
+        const response = await axios.get(process.env.MAKECOM_WEBHOOK_URL);
+        const listings = response.data;
+        return Array.isArray(listings) ? listings : [];
     } catch (error) {
-        console.error('Error fetching listings:', error);
+        console.error('Error fetching listings from make.com:', error.response?.data || error);
         return [];
     }
 } 
