@@ -24,15 +24,15 @@ export default function RootLayout({ children }) {
         <nav className="bg-white shadow-lg">
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center h-16">
-              <Link href="/" className="text-xl font-bold">
-                RetroDraft
+              <Link href="/" className="text-xl font-bold tracking-tighter">
+                retrodraft
               </Link>
               <div className="space-x-4">
-                <Link href="/" className="hover:text-blue-600">
+                <Link href="/" className="hover:text-sage-500">
                   Home
                 </Link>
-                <Link href="/products" className="hover:text-blue-600">
-                  Products
+                <Link href="/about" className="hover:text-sage-500">
+                  About
                 </Link>
               </div>
             </div>

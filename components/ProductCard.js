@@ -1,3 +1,7 @@
+'use client';
+import { useState } from 'react';
+import Link from 'next/link';
+
 function formatPrice(price) {
     if (!price?.amount || !price?.divisor) {
         return 'Price not available';
@@ -6,44 +10,52 @@ function formatPrice(price) {
 }
 
 export default function ProductCard({ product }) {
-    const { title, description, price, images, url } = product;
+    const { title, description, price, images, url, listing_id } = product;
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    // Only switch images if there are multiple images
+    const handleMouseEnter = () => {
+        if (images && images.length > 1) {
+            const nextIndex = (currentImageIndex + 1) % images.length;
+            setCurrentImageIndex(nextIndex);
+        }
+    };
+
+    // Reset to first image when mouse leaves
+    const handleMouseLeave = () => {
+        setCurrentImageIndex(0);
+    };
 
     return (
-        <div className="bg-white border overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
-            <div className="w-full h-64 bg-gray-200 flex items-center justify-center">
-                {images?.[0]?.url_570xN ? (
-                    <img
-                        src={images[0].url_570xN}
-                        alt={title}
-                        className="w-full h-64 object-cover"
-                    />
-                ) : (
-                    <span className="text-gray-400">Image not available</span>
-                )}
-            </div>
-            <div className="p-6">
-                <h3 className="text-xl font-medium mb-3">{title}</h3>
-                <p className="text-slate-500 mb-4 leading-snug text-sm">
-                    {description ? description.substring(0, 300) + '...' : 'No description available'}
-                </p>
-                <div className="flex justify-between items-center">
-                    <span className="text-lg text-gray-900">
-                        {formatPrice(price)}
-                    </span>
-                    {url ? (
-                        <a
-                            href={url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors"
-                        >
-                            View on Etsy
-                        </a>
-                    ) : (
-                        <span className="text-gray-400">Link not available</span>
+        <Link href={`/product/${listing_id}`}>
+            <div
+                className="bg-white overflow-hidden transition-all duration-300"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+            >
+                <div className="w-full h-64 bg-gray-200 flex items-center justify-center rounded-md overflow-hidden relative">
+                    {images?.map((image, index) => (
+                        <img
+                            key={image.url_570xN}
+                            src={image.url_570xN}
+                            alt={`${title} - View ${index + 1}`}
+                            className={`absolute w-full h-64 object-cover transition-opacity duration-500 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                                }`}
+                        />
+                    ))}
+                    {!images?.length && (
+                        <span className="text-gray-400">Image not available</span>
                     )}
                 </div>
+                <div className="p-6 flex flex-col items-center justify-center">
+                    <h3 className="text-md font-medium mb-1 text-center">{title}</h3>
+                    <div className="flex justify-between items-center">
+                        <span className="text-sm text-gray-600">
+                            {formatPrice(price)}
+                        </span>
+                    </div>
+                </div>
             </div>
-        </div>
+        </Link>
     );
 } 
