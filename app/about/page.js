@@ -69,7 +69,7 @@ export default function AboutPage() {
 
                     <section className="mt-12 border-t border-cream-200 pt-8">
                         <a
-                            href="https://www.etsy.com/shop/RetroDraft"
+                            href="https://retrodraft.etsy.com"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-block bg-sage-500 text-white px-8 py-3 rounded-full hover:bg-sage-400 transition-colors"

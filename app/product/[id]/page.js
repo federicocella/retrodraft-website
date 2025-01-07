@@ -35,6 +35,8 @@ export default async function ProductPage({ params }) {
         );
     }
 
+    const etsyUrl = `https://retrodraft.etsy.com/listing/${product.listing_id}`;
+
     return (
         <div className="min-h-screen bg-white py-12">
             <div className="container mx-auto px-4">
@@ -61,16 +63,14 @@ export default async function ProductPage({ params }) {
                         <div className="prose max-w-none">
                             <p className="text-gray-800 whitespace-pre-wrap">{product.description}</p>
                         </div>
-                        {product.url && (
-                            <a
-                                href={product.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-block bg-sage-500 text-white px-8 py-3 rounded-full hover:bg-sage-400 transition-colors mt-6"
-                            >
-                                View on Etsy
-                            </a>
-                        )}
+                        <a
+                            href={etsyUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-sage-500 text-white px-8 py-3 rounded-full hover:bg-sage-400 transition-colors mt-6"
+                        >
+                            View on Etsy
+                        </a>
                     </div>
                 </div>
             </div>

@@ -10,5 +10,5 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-family: 'Geist', Helvetica, Arial, sans-serif;
 }
