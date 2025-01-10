@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="1000" height="1000"><g clip-path="url(#SvgjsClipPath1050)"><rect width="1000" height="1000" fill="#ffefd2"></rect><g transform="matrix(1.6,0,0,1.6,100,100)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="500" height="500"><svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="500" height="500" fill="#FFEFD2"></rect>
+<path d="M52 52H184V52C184 124.902 124.902 184 52 184V184V52Z" fill="#88C8C1"></path>
+<path d="M316 184L316 52V52C388.902 52 448 111.098 448 184V184L316 184Z" fill="#88C8C1"></path>
+<path d="M316 316H448V316C448 388.902 388.902 448 316 448V448V316Z" fill="#D53D46"></path>
+<path d="M52 316L52 314C52 242.203 110.203 184 182 184L184 184L184 316L52 316Z" fill="#FFBC58"></path>
+<path d="M448 316L446 316C374.203 316 316 257.797 316 186L316 184L448 184L448 316Z" fill="#88C8C1"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M184 316C184 316 184 316 184 316C256.902 316 316 256.902 316 184C316 111.098 256.902 52 184 52L184 316Z" fill="#FFBC58"></path>
+<path d="M184 316H186C257.797 316 316 374.203 316 446V448H184L184 316Z" fill="#88C8C1"></path>
+<path d="M184 448L184 446C184 374.203 125.797 316 54 316L52 316L52 448L184 448Z" fill="#D53D46"></path>
+</svg></svg></g></g><defs><clipPath id="SvgjsClipPath1050"><rect width="1000" height="1000" x="0" y="0" rx="350" ry="350"></rect></clipPath></defs></svg>

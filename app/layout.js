@@ -16,14 +16,16 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "RetroDraft - Vintage Collectibles",
   description: "Discover unique vintage collectibles from RetroDraft",
+  metadataBase: new URL('https://www.retrodraft.shop'),
+  alternates: {
+    canonical: '/',
+  },
   icons: {
-    icon: '/icon.svg',
-    shortcut: '/icon.svg',
-    apple: '/icon.svg',
-    other: {
-      rel: 'apple-touch-icon-precomposed',
-      url: '/icon.svg',
-    },
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/icon.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: { url: '/apple-icon.png', sizes: '180x180' },
   },
 };
 

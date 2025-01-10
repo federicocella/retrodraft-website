@@ -18,6 +18,9 @@ function Paragraph({ children }) {
 export const metadata = {
     title: 'About RetroDraft | Vintage-Style Art Prints',
     description: 'Learn about RetroDraft and our collection of unique vintage-style prints.',
+    alternates: {
+        canonical: '/about',
+    },
 };
 
 export default function AboutPage() {

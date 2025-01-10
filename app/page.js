@@ -9,6 +9,9 @@ export const revalidate = 604800;
 export const metadata = {
   title: 'RetroDraft | Music, Maps, and Generative Art Prints',
   description: 'Discover unique vintage-style prints',
+  alternates: {
+    canonical: '/',
+  },
 };
 
 export default async function HomePage() {
