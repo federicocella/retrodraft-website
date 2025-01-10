@@ -1,6 +1,9 @@
 import { getShopListings } from '@/utils/makecom';
 import ProductCard from '@/components/ProductCard';
+import SortControl from '@/components/SortControl';
+import Pagination from '@/components/Pagination';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Revalidate weekly to conserve build minutes
 export const revalidate = 604800;
@@ -8,14 +11,40 @@ export const revalidate = 604800;
 // Metadata for SEO
 export const metadata = {
   title: 'RetroDraft | Music, Maps, and Generative Art Prints',
-  description: 'Discover unique vintage-style prints',
+  description: 'Discover unique vintage-style generative art prints, both digital and physical',
   alternates: {
     canonical: '/',
   },
 };
 
-export default async function HomePage() {
+const ITEMS_PER_PAGE = 8;
+
+export default async function HomePage({ searchParams }) {
   const products = await getShopListings();
+  const { page, sort = 'newest' } = await searchParams;
+  const currentPage = Number(page || 1);
+
+  // Sort products
+  const sortedProducts = [...products].sort((a, b) => {
+    switch (sort) {
+      case 'price-low':
+        return a.price - b.price;
+      case 'price-high':
+        return b.price - a.price;
+      case 'name':
+        return a.title.localeCompare(b.title);
+      case 'newest':
+      default:
+        return b.listing_id - a.listing_id;
+    }
+  });
+
+  const totalPages = Math.ceil(sortedProducts.length / ITEMS_PER_PAGE);
+
+  // Get products for current page
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const currentProducts = sortedProducts.slice(startIndex, endIndex);
 
   return (
     <div className="min-h-screen bg-white">
@@ -51,11 +80,24 @@ export default async function HomePage() {
 
       {/* Products Section */}
       <div className="container mx-auto px-4 py-8 md:py-12">
+        {/* Title and Sort Controls */}
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="text-2xl font-medium tracking-tight text-gray-900">
+            All Products
+          </h2>
+          <SortControl currentSort={sort} />
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {products.map((product) => (
+          {currentProducts.map((product) => (
             <ProductCard key={product.listing_id} product={product} />
           ))}
         </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <Pagination currentPage={currentPage} totalPages={totalPages} />
+        )}
       </div>
     </div>
   );
