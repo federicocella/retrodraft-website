@@ -28,14 +28,15 @@ export default async function HomePage({ searchParams }) {
   const sortedProducts = [...products].sort((a, b) => {
     switch (sort) {
       case 'price-low':
-        return a.price - b.price;
+        return (a.price.amount / a.price.divisor) - (b.price.amount / b.price.divisor);
       case 'price-high':
-        return b.price - a.price;
+        return (b.price.amount / b.price.divisor) - (a.price.amount / a.price.divisor);
       case 'name':
         return a.title.localeCompare(b.title);
       case 'newest':
       default:
-        return b.listing_id - a.listing_id;
+        // Keep original array order (newest first)
+        return products.indexOf(a) - products.indexOf(b);
     }
   });
 
