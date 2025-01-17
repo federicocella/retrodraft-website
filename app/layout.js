@@ -1,17 +1,6 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from 'next/link';
 import Image from 'next/image';
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata = {
   title: "RetroDraft - Vintage Collectibles",
@@ -32,8 +21,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <nav className="bg-white shadow-lg">
+      <body className="antialiased">
+        <nav className="bg-white">
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center h-16">
               <Link href="/" className="flex items-center space-x-2 cursor-pointer">
@@ -44,13 +33,16 @@ export default function RootLayout({ children }) {
                   height={24}
                   className="w-6 h-6 cursor-pointer"
                 />
-                <span className="text-xl font-bold tracking-tighter cursor-pointer">
+                <span style={{ fontFamily: 'Helvetica Neue, Inter, Arial, sans-serif' }} className="text-xl font-bold tracking-tighter cursor-pointer">
                   retrodraft
                 </span>
               </Link>
               <div className="space-x-4">
                 <Link href="/" className="hover:text-sage-500">
                   Home
+                </Link>
+                <Link href="/blog" className="hover:text-sage-500">
+                  Blog
                 </Link>
                 <Link href="/about" className="hover:text-sage-500">
                   About
