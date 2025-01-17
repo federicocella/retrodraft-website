@@ -65,7 +65,8 @@ const richTextOptions = {
 };
 
 export async function generateMetadata({ params }) {
-    const post = await getBlogPostBySlug(params.slug);
+    const { slug } = await params;
+    const post = await getBlogPostBySlug(slug);
 
     if (!post) {
         return {
@@ -92,7 +93,8 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPost({ params }) {
-    const post = await getBlogPostBySlug(params.slug);
+    const { slug } = await params;
+    const post = await getBlogPostBySlug(slug);
 
     if (!post) {
         notFound();
