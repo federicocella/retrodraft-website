@@ -8,6 +8,12 @@ export default {
   darkMode: false,
   theme: {
     extend: {
+      fontWeight: {
+        normal: 400,
+        medium: 500,
+        semibold: 500,
+        bold: 500,
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

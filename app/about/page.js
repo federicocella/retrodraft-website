@@ -37,22 +37,36 @@ export default function AboutPage() {
             <div className="container mx-auto px-4 py-12 max-w-3xl">
                 <div className="bg-white rounded-lg p-8 space-y-8">
                     <section className="space-y-4 mb-12">
-                        <SectionTitle>Our Story</SectionTitle>
+                        <SectionTitle>Story</SectionTitle>
                         <Paragraph>
-                            I'm Federico, and RetroDraft is my passion project. As a professional designer with a love for technology, music, and creativity, I wanted to create something that combines all the things I care about. It started as a small experiment—a way to merge vintage aesthetics and modern design—and turned into a bigger commitment. RetroDraft is where nostalgia meets artistry, inspired by the beats, maps, and visuals that have shaped me over the years.
+                            Hi! I'm Federico. I'm professional designer with a love for technology, music, and creativity, and I wanted to create something that combines all the things I care about.
+                            It started as a small experiment—a way to merge vintage aesthetics and modern design—and turned into a bigger commitment.
+                            RetroDraft is where nostalgia meets artistry, inspired by the beats, maps, and visuals that have shaped me over the years.
                         </Paragraph>
                     </section>
 
                     <section className="space-y-4 mb-12">
-                        <SectionTitle>Our Prints</SectionTitle>
+                        <SectionTitle>The Prints</SectionTitle>
                         <Paragraph>
-                            Every print you see here is the result of a lot of thought, care, and effort. From bold city maps that capture the energy of graffiti to typography pieces inspired by the albums and sounds I love, each design is created to bring personality and meaning to your space. All of my prints are high-quality, with either 300 DPI at A1 size for incredible detail or infinitely scalable vector graphics, so they'll look amazing no matter how you display them.
+                            Every print you see here is the result of a lot of thought, care, and effort.
+                            From bold city maps that capture the energy of graffiti to typography pieces inspired by the albums and sounds I love,
+                            each design is created to bring personality and meaning to your space.
+                            All of my prints are high-quality, with either 300 DPI at A1 size for incredible detail or infinitely scalable vector graphics, so they'll look amazing no matter how you display them.
                         </Paragraph>
                         <Paragraph>
-                            What you don't see is the behind-the-scenes work that goes into every series. Every series takes weeks in order to make sure each design is high quality and prints perfectly. It's a labor of love, and I hope that care comes through in the final product.
+                            What you don't see is the behind-the-scenes work that goes into every series.
+                            Every series takes weeks in order to make sure each design is high quality and prints perfectly.
+                            It's a labor of love, and I hope that care comes through in the final product.
                         </Paragraph>
                     </section>
-
+                    <section className="space-y-4 mb-12">
+                        <SectionTitle>About the use of AI</SectionTitle>
+                        <Paragraph>
+                            I'm a firm believer that human creativity is irreplaceable and that it has an intrinsic value that AI-generated art will never have.
+                            As a techie, I sometimes make use of AI to streamline my workflow, but AI is never used to generate the final designs and images.
+                            I'm committed to creating things that are unique, human, and made with care.
+                        </Paragraph>
+                    </section>
                     <section className="space-y-4 mb-12">
                         <SectionTitle>Quality & Sustainability</SectionTitle>
                         <Paragraph>

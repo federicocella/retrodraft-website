@@ -33,7 +33,8 @@ export default function RootLayout({ children }) {
                   height={24}
                   className="w-6 h-6 cursor-pointer"
                 />
-                <span style={{ fontFamily: 'Helvetica Neue, Inter, Arial, sans-serif' }} className="text-xl font-bold tracking-tighter cursor-pointer">
+
+                <span style={{ fontFamily: 'Helvetica Neue, Inter, Arial, sans-serif', fontWeight: 700 }} className="text-xl tracking-tighter cursor-pointer">
                   retrodraft
                 </span>
               </Link>
