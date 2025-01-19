@@ -51,8 +51,8 @@ export default async function HomePage({ searchParams }) {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <div className="bg-sage-800">
-        <div className="container mx-auto px-4 py-4 sm:py-6 md:py-8">
-          <div className="relative w-full h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] rounded-xl overflow-hidden opacity-0 animate-fade-in">
+        <div className="container mx-auto px-4 py-8 sm:py-6 md:py-8">
+          <div className="relative w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[500px] rounded-xl overflow-hidden opacity-0 animate-fade-in">
             <Image
               src="/hero.jpg"
               alt="RetroDraft Hero"
@@ -89,7 +89,7 @@ export default async function HomePage({ searchParams }) {
           <SortControl currentSort={sort} />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
           {currentProducts.map((product) => (
             <ProductCard key={product.listing_id} product={product} />
           ))}

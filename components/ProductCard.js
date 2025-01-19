@@ -48,7 +48,7 @@ export default function ProductCard({ product }) {
                     )}
                 </div>
                 <div className="p-6 flex flex-col items-center justify-center">
-                    <h3 className="text-md mb-1 text-center text-slate-900">{title}</h3>
+                    <h3 className="text-sm md:text-md mb-1 text-center text-slate-900 line-clamp-3">{title}</h3>
                     <div className="flex justify-between items-center">
                         <span className="text-sm text-gray-600">
                             {formatPrice(price)}

@@ -1,6 +1,6 @@
 import "./globals.css";
-import Link from 'next/link';
-import Image from 'next/image';
+import Navigation from "@/components/Navigation";
+import Script from 'next/script';
 
 export const metadata = {
   title: "RetroDraft - Vintage Collectibles",
@@ -21,37 +21,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="825e4a55-c44f-4bec-815b-6c52afb71638"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className="antialiased">
-        <nav className="bg-white">
-          <div className="container mx-auto px-4">
-            <div className="flex justify-between items-center h-16">
-              <Link href="/" className="flex items-center space-x-2 cursor-pointer">
-                <Image
-                  src="/icon.svg"
-                  alt="RetroDraft Logo"
-                  width={24}
-                  height={24}
-                  className="w-6 h-6 cursor-pointer"
-                />
-
-                <span style={{ fontFamily: 'Helvetica Neue, Inter, Arial, sans-serif', fontWeight: 700 }} className="text-xl tracking-tighter cursor-pointer">
-                  retrodraft
-                </span>
-              </Link>
-              <div className="space-x-4">
-                <Link href="/" className="hover:text-sage-500">
-                  Home
-                </Link>
-                <Link href="/blog" className="hover:text-sage-500">
-                  Blog
-                </Link>
-                <Link href="/about" className="hover:text-sage-500">
-                  About
-                </Link>
-              </div>
-            </div>
-          </div>
-        </nav>
+        <Navigation />
         <main>
           {children}
         </main>
