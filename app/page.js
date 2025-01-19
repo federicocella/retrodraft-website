@@ -88,7 +88,7 @@ export default async function HomePage({ searchParams }) {
       {sections.map((section) => (
         <div key={section.id} className="container mx-auto px-4 md:px-8 lg:px-12 py-12 md:py-24">
           <div className="flex flex-col md:flex-row md:gap-16 lg:gap-32 items-center md:px-8 lg:px-24">
-            <div className="relative aspect-[4/3] md:aspect-square w-full md:w-1/2 mb-4 md:mb-0 mx-auto">
+            <div className="relative aspect-[4/3] md:aspect-square w-5/6 md:w-1/2 mb-4 md:mb-0 mx-auto">
               <Image
                 src={`https:${section.image}`}
                 alt={section.title}
@@ -97,19 +97,21 @@ export default async function HomePage({ searchParams }) {
                 sizes="(max-width: 768px) 85vw, 50vw"
               />
             </div>
-            <div className="space-y-6 w-full md:w-1/2 justify-items-center md:justify-items-start">
+            <div className="flex flex-col items-center md:items-start space-y-6 w-full md:w-1/2">
               <span className="text-sage-500 font-medium">{section.subtitle}</span>
-              <h2 className="md:text-left text-center text-3xl sm:text-4xl md:text-5xl tracking-tight text-slate-900 font-medium">{section.title}</h2>
-              <p className="text-base md:text-left text-center sm:text-lg text-slate-600">
+              <h2 className="text-center md:text-left text-3xl sm:text-4xl md:text-5xl tracking-tight text-slate-900 font-medium">{section.title}</h2>
+              <p className="text-center md:text-left text-base sm:text-lg text-slate-600">
                 {section.description}
               </p>
               {section.ctaText && section.ctaLink && (
-                <Link
-                  href={section.ctaLink}
-                  className="inline-block px-6 py-3 bg-sage-500 text-white rounded-full hover:bg-sage-600 transition-colors"
-                >
-                  {section.ctaText}
-                </Link>
+                <div className="flex justify-center md:justify-start w-full">
+                  <Link
+                    href={section.ctaLink}
+                    className="inline-block px-6 py-3 bg-sage-500 text-white rounded-full hover:bg-sage-600 transition-colors"
+                  >
+                    {section.ctaText}
+                  </Link>
+                </div>
               )}
             </div>
           </div>
