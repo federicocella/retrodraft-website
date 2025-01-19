@@ -68,7 +68,7 @@ export default function Navigation() {
                                 height={24}
                                 className="w-6 h-6 cursor-pointer"
                             />
-                            <span style={{ fontFamily: 'TT Norms Pro', fontWeight: 500 }} className="text-xl tracking-tighter cursor-pointer">
+                            <span style={{ fontFamily: 'Helvetica Neue, Inter, Arial, sans-serif', fontWeight: 700 }} className="text-xl tracking-tighter cursor-pointer">
                                 retrodraft
                             </span>
                         </Link>

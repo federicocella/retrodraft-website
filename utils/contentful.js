@@ -55,4 +55,27 @@ export async function getBlogPostBySlug(slug) {
         console.error('Error fetching blog post:', error);
         return null;
     }
+}
+
+export async function getHomepageSections() {
+    try {
+        const response = await client.getEntries({
+            content_type: 'homepageSection',
+            order: 'fields.order',
+        });
+
+        return response.items.map((item) => ({
+            id: item.sys.id,
+            title: item.fields.title,
+            subtitle: item.fields.subtitle,
+            description: item.fields.description?.content?.[0]?.content?.[0]?.value || item.fields.description || '',
+            image: item.fields.image?.fields?.file?.url,
+            ctaText: item.fields.ctaText,
+            ctaLink: item.fields.ctaLink,
+            order: item.fields.order,
+        }));
+    } catch (error) {
+        console.error('Error fetching homepage sections:', error);
+        return [];
+    }
 } 

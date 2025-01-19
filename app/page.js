@@ -1,4 +1,5 @@
 import { getShopListings } from '@/utils/makecom';
+import { getHomepageSections } from '@/utils/contentful';
 import ProductCard from '@/components/ProductCard';
 import SortControl from '@/components/SortControl';
 import Pagination from '@/components/Pagination';
@@ -20,7 +21,11 @@ export const metadata = {
 const ITEMS_PER_PAGE = 8;
 
 export default async function HomePage({ searchParams }) {
-  const products = await getShopListings();
+  const [products, sections] = await Promise.all([
+    getShopListings(),
+    getHomepageSections()
+  ]);
+
   const { page, sort = 'newest' } = await searchParams;
   const currentPage = Number(page || 1);
 
@@ -78,6 +83,38 @@ export default async function HomePage({ searchParams }) {
           </div>
         </div>
       </div>
+
+      {/* Content Sections from Contentful */}
+      {sections.map((section) => (
+        <div key={section.id} className="container mx-auto px-4 md:px-8 lg:px-12 py-12 md:py-24">
+          <div className="flex flex-col md:flex-row md:gap-16 lg:gap-32 items-center md:px-8 lg:px-24">
+            <div className="relative aspect-[4/3] md:aspect-square w-full md:w-1/2 mb-4 md:mb-0 mx-auto">
+              <Image
+                src={`https:${section.image}`}
+                alt={section.title}
+                fill
+                className="object-cover rounded-lg"
+                sizes="(max-width: 768px) 85vw, 50vw"
+              />
+            </div>
+            <div className="space-y-6 w-full md:w-1/2 justify-items-center md:justify-items-start">
+              <span className="text-sage-500 font-medium">{section.subtitle}</span>
+              <h2 className="md:text-left text-center text-3xl sm:text-4xl md:text-5xl tracking-tight text-slate-900 font-medium">{section.title}</h2>
+              <p className="text-base md:text-left text-center sm:text-lg text-slate-600">
+                {section.description}
+              </p>
+              {section.ctaText && section.ctaLink && (
+                <Link
+                  href={section.ctaLink}
+                  className="inline-block px-6 py-3 bg-sage-500 text-white rounded-full hover:bg-sage-600 transition-colors"
+                >
+                  {section.ctaText}
+                </Link>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
 
       {/* Products Section */}
       <div className="container mx-auto px-4 py-8 md:py-12">
