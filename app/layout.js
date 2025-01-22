@@ -16,6 +16,9 @@ export const metadata = {
     ],
     apple: { url: '/apple-icon.png', sizes: '180x180' },
   },
+  other: {
+    'p:domain_verify': '0663ef8d25fc695097915b42dccfa4b7',
+  },
 };
 
 export default function RootLayout({ children }) {
