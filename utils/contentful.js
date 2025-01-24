@@ -69,7 +69,7 @@ export async function getHomepageSections() {
             title: item.fields.title,
             subtitle: item.fields.subtitle,
             description: item.fields.description?.content?.[0]?.content?.[0]?.value || item.fields.description || '',
-            image: item.fields.image?.fields?.file?.url,
+            image: item.fields.image?.fields?.file?.url + '?w=1200&fm=webp&q=75',
             ctaText: item.fields.ctaText,
             ctaLink: item.fields.ctaLink,
             order: item.fields.order,

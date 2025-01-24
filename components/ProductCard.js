@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 function formatPrice(price) {
     if (!price?.amount || !price?.divisor) {
@@ -35,13 +36,21 @@ export default function ProductCard({ product }) {
             >
                 <div className="w-full bg-gray-200 flex items-center justify-center rounded-md overflow-hidden relative aspect-square">
                     {images?.map((image, index) => (
-                        <img
+                        <div
                             key={image.url_570xN}
-                            src={image.url_570xN}
-                            alt={`${title} - View ${index + 1}`}
-                            className={`absolute w-full h-full object-cover transition-opacity duration-500 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                            className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'
                                 }`}
-                        />
+                        >
+                            <Image
+                                src={image.url_570xN}
+                                alt={`${title} - View ${index + 1}`}
+                                fill
+                                className="object-cover"
+                                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                                quality={75}
+                                loading={index === 0 ? "eager" : "lazy"}
+                            />
+                        </div>
                     ))}
                     {!images?.length && (
                         <span className="text-gray-400">Image not available</span>
