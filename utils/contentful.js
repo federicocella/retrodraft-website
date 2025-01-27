@@ -12,16 +12,23 @@ export async function getBlogPosts() {
             order: '-fields.publishedDate',
         });
 
-        return response.items.map((item) => ({
-            id: item.sys.id,
-            title: item.fields.title,
-            slug: item.fields.slug,
-            publishedDate: item.fields.publishedDate,
-            content: item.fields.content,
-            excerpt: item.fields.excerpt,
-            featuredImage: item.fields.featuredImage?.fields?.file?.url,
-            author: item.fields.author,
-        }));
+        return response.items.map((item) => {
+            // Clean up the fallback URL if it exists
+            const fallbackUrl = item.fields.featuredImageFallbackUrl?.startsWith('https:')
+                ? item.fields.featuredImageFallbackUrl.replace('https:', '')
+                : item.fields.featuredImageFallbackUrl;
+
+            return {
+                id: item.sys.id,
+                title: item.fields.title,
+                slug: item.fields.slug,
+                publishedDate: item.fields.publishedDate,
+                content: item.fields.content,
+                excerpt: item.fields.excerpt,
+                featuredImage: item.fields.featuredImage?.fields?.file?.url || fallbackUrl || null,
+                author: item.fields.author,
+            };
+        });
     } catch (error) {
         console.error('Error fetching blog posts:', error);
         return [];
@@ -41,6 +48,11 @@ export async function getBlogPostBySlug(slug) {
         }
 
         const post = response.items[0];
+        // Clean up the fallback URL if it exists
+        const fallbackUrl = post.fields.featuredImageFallbackUrl?.startsWith('https:')
+            ? post.fields.featuredImageFallbackUrl.replace('https:', '')
+            : post.fields.featuredImageFallbackUrl;
+
         return {
             id: post.sys.id,
             title: post.fields.title,
@@ -48,7 +60,7 @@ export async function getBlogPostBySlug(slug) {
             publishedDate: post.fields.publishedDate,
             content: post.fields.content,
             excerpt: post.fields.excerpt,
-            featuredImage: post.fields.featuredImage?.fields?.file?.url,
+            featuredImage: post.fields.featuredImage?.fields?.file?.url || fallbackUrl || null,
             author: post.fields.author,
         };
     } catch (error) {
