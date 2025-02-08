@@ -112,7 +112,7 @@ export default async function BlogPost({ params }) {
                             day: 'numeric',
                         })}
                     </time>
-                    {post.author && <span>By {post.author}</span>}
+                    {/* {post.author && <span>By {post.author}</span>} */}
                 </div>
                 {post.featuredImage && (
                     <div className="relative aspect-video mb-8">
