@@ -27,6 +27,7 @@ export async function getBlogPosts() {
                 excerpt: item.fields.excerpt,
                 featuredImage: item.fields.featuredImage?.fields?.file?.url || fallbackUrl || null,
                 author: item.fields.author,
+                tags: item.fields.tags || [],
             };
         });
     } catch (error) {
@@ -62,6 +63,7 @@ export async function getBlogPostBySlug(slug) {
             excerpt: post.fields.excerpt,
             featuredImage: post.fields.featuredImage?.fields?.file?.url || fallbackUrl || null,
             author: post.fields.author,
+            tags: post.fields.tags || [],
         };
     } catch (error) {
         console.error('Error fetching blog post:', error);

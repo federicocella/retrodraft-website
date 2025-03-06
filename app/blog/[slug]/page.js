@@ -114,6 +114,18 @@ export default async function BlogPost({ params }) {
                     </time>
                     {/* {post.author && <span>By {post.author}</span>} */}
                 </div>
+                {post.tags && post.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-6">
+                        {post.tags.map((tag) => (
+                            <span
+                                key={tag}
+                                className="inline-block px-3 py-1 text-sm bg-sage-50 text-sage-800 rounded-full"
+                            >
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                )}
                 {post.featuredImage && (
                     <div className="relative aspect-video mb-8">
                         <Image

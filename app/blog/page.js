@@ -30,6 +30,18 @@ export default async function BlogPage() {
                                 </Link>
                             </h2>
                             <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                            {post.tags && post.tags.length > 0 && (
+                                <div className="flex flex-wrap gap-1.5 mb-4">
+                                    {post.tags.map((tag) => (
+                                        <span
+                                            key={tag}
+                                            className="inline-block px-2 py-0.5 text-xs bg-sage-50 text-sage-800 rounded-full"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            )}
                             <div className="flex items-center justify-between text-sm text-gray-500">
                                 <span>{new Date(post.publishedDate).toLocaleDateString()}</span>
                                 {/* {post.author && <span>By {post.author}</span>} */}
