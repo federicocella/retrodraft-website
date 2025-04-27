@@ -1,4 +1,4 @@
-import { getShopListings } from '@/utils/makecom';
+import { getShopListings } from '@/utils/etsy';
 import { getBlogPosts } from '@/utils/contentful';
 
 export default async function sitemap() {

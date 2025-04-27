@@ -1,4 +1,4 @@
-import { getShopListings } from '@/utils/makecom';
+import { getShopListings } from '@/utils/etsy';
 import ImageCarousel from '@/components/ImageCarousel';
 import Link from 'next/link';
 import Script from 'next/script';

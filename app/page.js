@@ -1,4 +1,4 @@
-import { getShopListings } from '@/utils/makecom';
+import { getShopListings } from '@/utils/etsy';
 import { getHomepageSections } from '@/utils/contentful';
 import ProductCard from '@/components/ProductCard';
 import SortControl from '@/components/SortControl';
