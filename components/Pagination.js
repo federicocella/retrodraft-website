@@ -2,14 +2,14 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 
-export default function Pagination({ currentPage, totalPages }) {
+export default function Pagination({ currentPage, totalPages, basePath = '/' }) {
     const router = useRouter();
     const searchParams = useSearchParams();
 
     const handlePageChange = (newPage) => {
         const params = new URLSearchParams(searchParams);
         params.set('page', newPage);
-        router.push(`/?${params.toString()}`, { scroll: false });
+        router.push(`${basePath}?${params.toString()}`, { scroll: false });
     };
 
     return (

@@ -1,7 +1,35 @@
 import axios from 'axios';
 import { sampleListings } from './mockData';
 
-const ETSY_API_BASE_URL = 'https://openapi.etsy.com/v3';
+// Updated API base URL - Etsy's current API endpoint domain
+const ETSY_API_BASE_URL = 'https://api.etsy.com/v3';
+
+// HTML entity decoder helper function
+function decodeHtmlEntities(text) {
+    if (!text) return '';
+
+    const entities = {
+        '&amp;': '&',
+        '&lt;': '<',
+        '&gt;': '>',
+        '&quot;': '"',
+        '&#39;': "'",
+        '&#x27;': "'",
+        '&#x2F;': '/',
+        '&#x60;': '`',
+        '&#x3D;': '='
+    };
+
+    // Replace numeric entities like &#39;
+    text = text.replace(/&#(\d+);/g, (match, dec) => {
+        return String.fromCharCode(dec);
+    });
+
+    // Replace named entities like &amp;
+    return text.replace(/&[a-z]+;/gi, (match) => {
+        return entities[match] || match;
+    });
+}
 
 // Cache object to store the listings and timestamp
 let cache = {
@@ -92,8 +120,8 @@ async function fetchListingsFromEtsy() {
 
             return {
                 listing_id: listing.listing_id.toString(),
-                title: listing.title,
-                description: listing.description,
+                title: decodeHtmlEntities(listing.title),
+                description: decodeHtmlEntities(listing.description),
                 price: {
                     amount: listing.price.amount,
                     divisor: listing.price.divisor,

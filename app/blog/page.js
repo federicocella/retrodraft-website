@@ -1,17 +1,37 @@
 import { getBlogPosts } from '@/utils/contentful';
 import Link from 'next/link';
 import Image from 'next/image';
+import Pagination from '@/components/Pagination';
 
 export const revalidate = 3600; // Revalidate every hour
 
-export default async function BlogPage() {
+// Number of blog posts per page
+const POSTS_PER_PAGE = 9;
+
+export default async function BlogPage({ searchParams }) {
     const posts = await getBlogPosts();
 
-    return (
-        <div className="container mx-auto px-4 py-8">
-            <h1 className="text-4xl font-bold mb-8">Blog</h1>
+    // Get the current page from URL parameters
+    const { page } = await searchParams;
+    const currentPage = Number(page || 1);
+
+    // Calculate total pages and posts for current page
+    const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+    const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+    const endIndex = startIndex + POSTS_PER_PAGE;
+    const currentPosts = posts.slice(startIndex, endIndex);
+
+    return (<div>
+        <div className="bg-sage-800 h-72 flex justify-end flex-col">
+            <div className="container mx-auto px-4 py-8">
+                <h1 className="text-5xl font-bold mb-3 text-white">Retrodraft's Blog</h1>
+            </div>
+        </div>
+        <div className="container mx-auto px-4 py-8 pt-12">
+
+            {/* Blog posts grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {posts.map((post) => (
+                {currentPosts.map((post) => (
                     <article key={post.id} className="bg-white shadow-sm overflow-hidden border border-slate-200 shadow- hover:border-slate-300">
                         {post.featuredImage && (
                             <div className="relative h-48">
@@ -50,6 +70,16 @@ export default async function BlogPage() {
                     </article>
                 ))}
             </div>
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    basePath="/blog"
+                />
+            )}
         </div>
+    </div >
     );
 } 

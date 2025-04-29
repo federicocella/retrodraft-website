@@ -24,11 +24,12 @@ export default function ImageCarousel({ images }) {
             <div className="relative w-full h-full">
                 {images.map((image, index) => (
                     <img
-                        key={image.url_570xN}
-                        src={image.url_570xN}
+                        key={image.listing_image_id || index}
+                        src={image.url_fullxfull || image.url_570xN}
                         alt={`Product view ${index + 1}`}
-                        className={`absolute w-full h-full object-cover transition-opacity duration-500 ease-in-out ${index === currentIndex ? 'opacity-100' : 'opacity-0'
+                        className={`absolute w-full h-full object-contain transition-opacity duration-500 ease-in-out ${index === currentIndex ? 'opacity-100' : 'opacity-0'
                             }`}
+                        loading={index === 0 ? "eager" : "lazy"}
                     />
                 ))}
             </div>
