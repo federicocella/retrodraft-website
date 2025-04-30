@@ -53,7 +53,7 @@ export default async function HomePage({ searchParams }) {
   const currentProducts = sortedProducts.slice(startIndex, endIndex);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white pb-16">
       {/* Hero Section */}
       <div className="bg-sage-800">
         <div className="container mx-auto px-4 py-8 sm:py-6 md:py-8">

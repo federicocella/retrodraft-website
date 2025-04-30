@@ -93,7 +93,7 @@ export default async function ProductPage({ params }) {
             <Script id="product-jsonld" type="application/ld+json">
                 {JSON.stringify(jsonLd)}
             </Script>
-            <div className="min-h-screen bg-white py-12">
+            <div className="min-h-screen bg-white py-12 pb-32">
                 <div className="container mx-auto px-4">
                     {/* Back Button */}
                     <Link href="/" className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-8">

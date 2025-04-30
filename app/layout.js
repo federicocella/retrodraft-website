@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Script from 'next/script';
+import Footer from '@/components/Footer'
 
 export const metadata = {
   title: "RetroDraft - Vintage Collectibles",
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
         <main>
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );

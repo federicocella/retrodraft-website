@@ -27,7 +27,7 @@ export default async function BlogPage({ searchParams }) {
                 <h1 className="text-5xl font-bold mb-3 text-white">Retrodraft's Blog</h1>
             </div>
         </div>
-        <div className="container mx-auto px-4 py-8 pt-12">
+        <div className="container mx-auto px-4 py-8 pt-16 pb-24">
 
             {/* Blog posts grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

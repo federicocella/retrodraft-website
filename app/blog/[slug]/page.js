@@ -101,7 +101,7 @@ export default async function BlogPost({ params }) {
     }
 
     return (
-        <article className="container mx-auto px-4 py-8">
+        <article className="container mx-auto px-4 py-8 pt-16 pb-32">
             <header className="max-w-5xl mx-auto mb-8">
                 <h1 className="text-5xl leading-tight font-medium mb-4 tracking-tight text-slate-900">{post.title}</h1>
                 <div className="flex items-center gap-4 text-slate-600 mb-6">

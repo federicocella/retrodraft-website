@@ -28,13 +28,13 @@ export default function AboutPage() {
         <div className="min-h-screen">
             {/* Hero Section */}
             <div className="bg-white">
-                <div className="container mx-auto px-4 py-16 text-center">
+                <div className="container mx-auto px-4 pt-16 pb-4 text-center">
                     <h1 className="text-4xl md:text-5xl font-semibold mb-4 text-slate-900 tracking-tight">About RetroDraft</h1>
                 </div>
             </div>
 
             {/* Content Section */}
-            <div className="container mx-auto px-4 py-12 max-w-3xl">
+            <div className="container mx-auto px-4 py-12 pb-32 max-w-3xl">
                 <div className="bg-white rounded-lg p-8 space-y-8">
                     <section className="space-y-4 mb-12">
                         <SectionTitle>Story</SectionTitle>
@@ -84,7 +84,7 @@ export default function AboutPage() {
                         </Paragraph>
                     </section>
 
-                    <section className="mt-12 border-t border-cream-200 pt-8">
+                    <section className="mt-12 border-t border-gray-200 pt-8">
                         <a
                             href="https://retrodraft.etsy.com"
                             target="_blank"
