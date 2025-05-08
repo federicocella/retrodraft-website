@@ -40,6 +40,20 @@ async function getProduct(params) {
     return products.find(product => product.listing_id.toString() === id.toString());
 }
 
+function formatPrice(price) {
+    if (!price?.amount || !price?.divisor) {
+        return 'Price not available';
+    }
+    const amount = price.amount / price.divisor;
+    const currencyCode = price.currency_code || 'EUR'; // Default to EUR if not specified
+    return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: currencyCode,
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    }).format(amount);
+}
+
 export default async function ProductPage({ params }) {
     const product = await getProduct(params);
 
@@ -113,7 +127,7 @@ export default async function ProductPage({ params }) {
                         <div className="space-y-6">
                             <h1 className="text-3xl font-medium">{product.title}</h1>
                             <p className="text-xl font-semibold text-gray-800">
-                                ${((product.price?.amount || 0) / (product.price?.divisor || 100)).toFixed(2)}
+                                {formatPrice(product.price)}
                             </p>
                             <div className="prose max-w-none">
                                 <p className="text-gray-800 whitespace-pre-wrap">{product.description}</p>

@@ -7,7 +7,14 @@ function formatPrice(price) {
     if (!price?.amount || !price?.divisor) {
         return 'Price not available';
     }
-    return `$${(price.amount / price.divisor).toFixed(2)}`;
+    const amount = price.amount / price.divisor;
+    const currencyCode = price.currency_code || 'EUR'; // Default to EUR if not specified
+    return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: currencyCode,
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    }).format(amount);
 }
 
 export default function ProductCard({ product }) {
