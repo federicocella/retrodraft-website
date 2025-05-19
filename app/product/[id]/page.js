@@ -2,6 +2,7 @@ import { getShopListings } from '@/utils/etsy';
 import ImageCarousel from '@/components/ImageCarousel';
 import Link from 'next/link';
 import Script from 'next/script';
+import EtsyButton from '@/components/EtsyButton';
 
 // Generate static pages at build time
 export async function generateStaticParams() {
@@ -132,14 +133,7 @@ export default async function ProductPage({ params }) {
                             <div className="prose max-w-none">
                                 <p className="text-gray-800 whitespace-pre-wrap">{product.description}</p>
                             </div>
-                            <a
-                                href={etsyUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-block bg-sage-500 text-white px-8 py-3 rounded-full hover:bg-sage-400 transition-colors mt-6"
-                            >
-                                View on Etsy
-                            </a>
+                            <EtsyButton url={etsyUrl} productName={product.title} />
                         </div>
                     </div>
                 </div>
