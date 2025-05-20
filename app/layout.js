@@ -2,6 +2,7 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Script from 'next/script';
 import Footer from '@/components/Footer'
+import PinterestPageVisit from '@/components/PinterestPageVisit'
 
 export const metadata = {
   title: "RetroDraft - Vintage Collectibles",
@@ -60,6 +61,7 @@ export default function RootLayout({ children }) {
         </noscript>
       </head>
       <body className="antialiased">
+        <PinterestPageVisit />
         <Navigation />
         <main>
           {children}
