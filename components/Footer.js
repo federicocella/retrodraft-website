@@ -1,13 +1,18 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 export default function Footer() {
+    const [mounted, setMounted] = useState(false);
     const [email, setEmail] = useState('');
     const [status, setStatus] = useState('idle');
     const [message, setMessage] = useState('');
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -36,6 +41,12 @@ export default function Footer() {
             setStatus('error');
             setMessage('An error occurred. Please try again later.');
         }
+    };
+
+    const handleCookiePreferences = () => {
+        if (!mounted) return;
+        localStorage.removeItem('cookieConsent');
+        window.location.reload();
     };
 
     return (
@@ -94,13 +105,28 @@ export default function Footer() {
                                     About
                                 </Link>
                             </li>
+                            <li>
+                                <Link href="/privacy" className="hover:text-blue-400 transition-colors">
+                                    Privacy Policy
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="mt-8 pt-8 text-center text-sm">
-                    <p>&copy; {new Date().getFullYear()} Retrodraft. All rights reserved.</p>
+                <div className="mt-8 pt-8 border-t border-sage-700">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <p className="text-sm">&copy; {new Date().getFullYear()} Retrodraft. All rights reserved.</p>
+                        <div className="flex gap-4">
+                            <button
+                                onClick={handleCookiePreferences}
+                                className="text-sm text-gray-300 hover:text-white transition-colors"
+                            >
+                                Cookie Preferences
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </footer>

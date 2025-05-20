@@ -1,8 +1,19 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+
 export default function EtsyButton({ url, productName }) {
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
     const handleClick = () => {
-        if (window.pintrk) {
+        if (!mounted) return;
+
+        const consent = JSON.parse(localStorage.getItem('cookieConsent') || '{"marketing":false}');
+        if (consent.marketing && window.pintrk) {
             window.pintrk('track', 'lead', {
                 event_id: 'eventId0001',
                 line_items: [
