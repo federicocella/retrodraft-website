@@ -8,6 +8,14 @@ export const revalidate = 3600; // Revalidate every hour
 // Number of blog posts per page
 const POSTS_PER_PAGE = 9;
 
+export const metadata = {
+    title: "RetroDraft's Blog | Vintage Collectibles",
+    description: "Read about vintage collectibles, art prints, and more on RetroDraft's blog.",
+    alternates: {
+        canonical: 'https://www.retrodraft.shop/blog',
+    },
+};
+
 export default async function BlogPage({ searchParams }) {
     const posts = await getBlogPosts();
 

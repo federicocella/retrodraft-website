@@ -19,7 +19,7 @@ export const metadata = {
     title: 'About RetroDraft | Vintage-Style Art Prints',
     description: 'Learn about RetroDraft and our collection of unique vintage-style prints.',
     alternates: {
-        canonical: '/about',
+        canonical: 'https://www.retrodraft.shop/about',
     },
 };
 

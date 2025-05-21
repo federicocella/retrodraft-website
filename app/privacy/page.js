@@ -4,7 +4,7 @@ export const metadata = {
     title: 'Privacy Policy | RetroDraft',
     description: 'Learn about how RetroDraft collects and uses your data.',
     alternates: {
-        canonical: '/privacy',
+        canonical: 'https://www.retrodraft.shop/privacy',
     },
 };
 

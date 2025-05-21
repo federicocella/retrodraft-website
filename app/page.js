@@ -14,7 +14,7 @@ export const metadata = {
   title: 'RetroDraft | Music, Maps, and Generative Art Prints',
   description: 'Discover unique vintage-style generative art prints, both digital and physical',
   alternates: {
-    canonical: '/',
+    canonical: 'https://www.retrodraft.shop',
   },
 };
 

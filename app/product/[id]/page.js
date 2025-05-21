@@ -27,7 +27,7 @@ export async function generateMetadata({ params }) {
         title: `${product.title} | RetroDraft`,
         description: product.description.slice(0, 155) + '...',
         alternates: {
-            canonical: `/product/${product.listing_id}`,
+            canonical: `https://www.retrodraft.shop/product/${product.listing_id}`,
         },
     };
 }

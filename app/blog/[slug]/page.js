@@ -77,6 +77,9 @@ export async function generateMetadata({ params }) {
     return {
         title: `${post.title} | RetroDraft Blog`,
         description: post.excerpt,
+        alternates: {
+            canonical: `https://www.retrodraft.shop/blog/${post.slug}`,
+        },
         openGraph: {
             title: post.title,
             description: post.excerpt,
