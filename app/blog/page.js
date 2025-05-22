@@ -58,6 +58,7 @@ export default async function BlogPage({ searchParams }) {
                                 </Link>
                             </h2>
                             <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                            <Link href={`/blog/${post.slug}`} className="text-sage-500 hover:text-sage-400 font-medium">Read the post</Link>
                             {post.tags && post.tags.length > 0 && (
                                 <div className="flex flex-wrap gap-1.5 mb-4">
                                     {post.tags.map((tag) => (

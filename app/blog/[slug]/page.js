@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, MARKS } from '@contentful/rich-text-types';
+import Script from 'next/script';
 
 export const revalidate = 3600; // Revalidate every hour
 
@@ -105,6 +106,24 @@ export default async function BlogPost({ params }) {
 
     return (
         <article className="container mx-auto px-4 py-8 pt-16 pb-32">
+            <Script id="blogpost-jsonld" type="application/ld+json">
+                {JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "BlogPosting",
+                    "headline": post.title,
+                    "description": post.excerpt,
+                    "image": post.featuredImage ? `https:${post.featuredImage}` : undefined,
+                    "datePublished": post.publishedDate,
+                    "author": {
+                        "@type": "Person",
+                        "name": post.author || "RetroDraft"
+                    },
+                    "mainEntityOfPage": {
+                        "@type": "WebPage",
+                        "@id": `https://www.retrodraft.shop/blog/${post.slug}`
+                    }
+                })}
+            </Script>
             <header className="max-w-5xl mx-auto mb-8">
                 <h1 className="text-5xl leading-tight font-medium mb-4 tracking-tight text-slate-900">{post.title}</h1>
                 <div className="flex items-center gap-4 text-slate-600 mb-6">

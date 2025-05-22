@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function ImageCarousel({ images }) {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -23,14 +24,25 @@ export default function ImageCarousel({ images }) {
             {/* Main Image */}
             <div className="relative w-full h-full">
                 {images.map((image, index) => (
-                    <img
-                        key={image.listing_image_id || index}
-                        src={image.url_fullxfull || image.url_570xN}
-                        alt={`Product view ${index + 1}`}
-                        className={`absolute w-full h-full object-contain transition-opacity duration-500 ease-in-out ${index === currentIndex ? 'opacity-100' : 'opacity-0'
-                            }`}
-                        loading={index === 0 ? "eager" : "lazy"}
-                    />
+                    index === 0 ? (
+                        <Image
+                            key={image.listing_image_id || index}
+                            src={image.url_570xN || image.url_fullxfull}
+                            alt={`Product view 1`}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            priority
+                            className={`absolute w-full h-full object-contain transition-opacity duration-500 ease-in-out ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`}
+                        />
+                    ) : (
+                        <img
+                            key={image.listing_image_id || index}
+                            src={image.url_570xN || image.url_fullxfull}
+                            alt={`Product view ${index + 1}`}
+                            className={`absolute w-full h-full object-contain transition-opacity duration-500 ease-in-out ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`}
+                            loading="lazy"
+                        />
+                    )
                 ))}
             </div>
 

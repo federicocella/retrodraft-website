@@ -122,6 +122,7 @@ export default function Footer() {
                             <button
                                 onClick={handleCookiePreferences}
                                 className="text-sm text-gray-300 hover:text-white transition-colors"
+                                aria-label="Open cookie preferences dialog"
                             >
                                 Cookie Preferences
                             </button>

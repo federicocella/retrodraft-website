@@ -79,13 +79,13 @@ export default async function ProductPage({ params }) {
         "@type": "Product",
         "name": product.title,
         "description": product.description,
-        "image": product.images[0]?.url_570xN,
+        "image": product.images[0]?.url_570xN || product.images[0]?.url_fullxfull,
         "offers": {
             "@type": "Offer",
             "price": ((product.price?.amount || 0) / (product.price?.divisor || 100)).toFixed(2),
-            "priceCurrency": "USD",
+            "priceCurrency": product.price?.currency_code || "USD",
             "availability": "https://schema.org/InStock",
-            "url": etsyUrl,
+            "url": `https://www.retrodraft.shop/product/${product.listing_id}`,
             "seller": {
                 "@type": "Organization",
                 "name": "RetroDraft",
