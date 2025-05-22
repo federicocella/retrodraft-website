@@ -17,6 +17,11 @@ export default function ImageCarousel({ images }) {
         setCurrentIndex(index);
     };
 
+    function getAbsoluteUrl(url) {
+        if (!url) return '';
+        return url.startsWith('http') ? url : `https:${url}`;
+    }
+
     if (!images?.length) return null;
 
     return (
@@ -27,7 +32,7 @@ export default function ImageCarousel({ images }) {
                     index === 0 ? (
                         <Image
                             key={image.listing_image_id || index}
-                            src={image.url_570xN || image.url_fullxfull}
+                            src={getAbsoluteUrl(image.url_570xN) || getAbsoluteUrl(image.url_fullxfull)}
                             alt={`Product view 1`}
                             fill
                             sizes="(max-width: 768px) 100vw, 50vw"
@@ -37,7 +42,7 @@ export default function ImageCarousel({ images }) {
                     ) : (
                         <img
                             key={image.listing_image_id || index}
-                            src={image.url_570xN || image.url_fullxfull}
+                            src={getAbsoluteUrl(image.url_570xN) || getAbsoluteUrl(image.url_fullxfull)}
                             alt={`Product view ${index + 1}`}
                             className={`absolute w-full h-full object-contain transition-opacity duration-500 ease-in-out ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`}
                             loading="lazy"
